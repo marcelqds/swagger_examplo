@@ -12,7 +12,7 @@
 			"response":{
 				"200":{"description":"Operação bem-sucedida"},
 				"404":{"description": "Não encontrada"}
-			}
+			},
 		"post":{
 			"summary":"Criação de usuário",
 			"response":{
