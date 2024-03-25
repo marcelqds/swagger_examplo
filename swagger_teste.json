@@ -7,7 +7,6 @@
 "paths":{
 	"/usuarios":{
 		"get":{
-			
 			"summary":"Lista de usuários",
 			"description":"Lista todos os usuários",
 			"responses":{
@@ -15,7 +14,6 @@
 				"404":{"description": "Não encontrada"}
 			},
 		"post":{
-			"tags": ["Criação de usuário"],
 			"summary":"Criação de usuário",
 			"responses":{
 				"201":{"description":"Usuário criado com sucesso"}
