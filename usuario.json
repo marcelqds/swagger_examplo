@@ -1,26 +1,27 @@
 {
-"swagger": "2.0",
-"info":{
-"version":"1.0.0",
-"title":"API de Exemplo"
-},
-"paths":{
-	"/usuarios":{
-		"get":{
-			"tags":["Lista de usuários"],
-			"description":"Lista todos os usuários",
-			"responses":{
-				"200":{"description":"Operação bem-sucedida"},
-				"404":{"description": "Não encontrada"}
+	"swagger": "2.0",
+	"info":{
+		"version":"1.0.0",
+		"title":"API de Exemplo"
+	},
+	"paths":{
+		"/usuarios":{
+			"get":{
+				"tags":["Lista de usu├írios"],
+				"summary":"Lista de usu├írios222",
+				"description":"Lista todos os usu├írios",
+				"responses":{
+					"200":{"description":"Operac├úo bem-sucedida"},
+					"404":{"description": "N├úo encontrada"}
+				}
 			},
-		"post":{
-			"tag":["Criação de usuário"],
-			"responses":{
-				"201":{"description":"Usuário criado com sucesso"}
-			}
-		}
+			"post":{
+				"summary":"Cria├º├úo de usu├írio",
+				"tags":["Cria├º├úo de usu├írio"],
+				"responses":{
+					"201":{"description":"Usu├írio criado com sucesso"}
+				}
+			}	
 		}
 	}
-
-}
 }
