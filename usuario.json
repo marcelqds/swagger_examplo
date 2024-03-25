@@ -7,19 +7,19 @@
 	"paths":{
 		"/usuarios":{
 			"get":{
-				"tags":["Lista de usu├írios"],
-				"summary":"Lista de usu├írios222",
-				"description":"Lista todos os usu├írios",
+				"tags":["Lista de usuários"],
+				"summary":"List users",
+				"description":"Lista todos os usuários",
 				"responses":{
-					"200":{"description":"Operac├úo bem-sucedida"},
-					"404":{"description": "N├úo encontrada"}
+					"200":{"description":"Operação bem-sucedida"},
+					"404":{"description": "Não encontrada"}
 				}
 			},
 			"post":{
-				"summary":"Cria├º├úo de usu├írio",
-				"tags":["Cria├º├úo de usu├írio"],
+				"tags":["Criação de usuários"],
+				"summary":"Create users",
 				"responses":{
-					"201":{"description":"Usu├írio criado com sucesso"}
+					"201":{"description":"Usuário criado com sucesso"}
 				}
 			}	
 		}
