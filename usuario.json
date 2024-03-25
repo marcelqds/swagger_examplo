@@ -7,14 +7,14 @@
 "paths":{
 	"/usuarios":{
 		"get":{
-			"summary":"Lista de usuários",
+			"tags":["Lista de usuários"],
 			"description":"Lista todos os usuários",
 			"responses":{
 				"200":{"description":"Operação bem-sucedida"},
 				"404":{"description": "Não encontrada"}
 			},
 		"post":{
-			"summary":"Criação de usuário",
+			"tag":["Criação de usuário"],
 			"responses":{
 				"201":{"description":"Usuário criado com sucesso"}
 			}
