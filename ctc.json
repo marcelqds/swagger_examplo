@@ -168,6 +168,7 @@
   "paths": {
     "/rest/crudCTC/Produtos": {
       "get": {
+        "tags":"Lista Produtos",
         "summary": "Lista de Produtos",
         "responses": {
           "200": {
@@ -179,6 +180,7 @@
     },
     "/rest/crudCTC/Fornecedores": {
       "get": {
+        "tags":"Lista Fornecedores",
         "summary": "Lista de Fornecedores",
         "description": "Retorna uma lista de fornecedores",
         "responses": {
