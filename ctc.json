@@ -1,94 +1,194 @@
 {
-	"swagger":"2.0",
-	"components":{
-		"schemas":{
-			"produto":{
-				"type":"object",
-				"properties":{
-					"BLOQUEADO":{"type":"string"}
-					"CODIGO":{"type":"string"}
-					"DATA_ALTERACAO":{"type":"string"}
-					"DATA_INCLUSAO":{"type":"string"}
-					"DESCRICAO_ESTENDIDA":{"type":"string"}
-					"DESCRICAO_TIPO":{"type":"string"}
-					"DESCRICAO_UM":{"type":"string"}
-					"HORA_ALTERACAO":{"type":"string"}
-					"HORA_INCLUSAO":{"type":"string"}
-					"TIPO":{"type":"string"}
-					"UNIDADE_MEDIDA":{"type":"string"}
-				}
-			},
-			"fornecedor":{
-				"type":"object",
-				"properties":{
-					"BAIRRO":{ "type": "string"},
-					"CCM":{ "type": "string"},
-					"CELULAR_1":{ "type": "string"},
-					"CELULAR_2":{ "type": "string"},
-					"CELULAR_3":{ "type": "string"},
-					"CEP":{ "type": "string"},
-					"CIDADE":{ "type": "string"},
-					"CNPJ":{ "type": "string"},
-					"CONTATO_1":{ "type": "string"},
-					"CONTATO_2":{ "type": "string"},
-					"CONTATO_3":{ "type": "string"},
-					"DATA_INCLUSAO":{ "type": "string"},
-					"DDD":{ "type": "string"},
-					"DESCRIC_STATUS":{ "type": "string"},
-					"DESCRIC_TIPO":{ "type": "string"},
-					"DT_ULTIMA_ALTERACAO":{ "type": "string"},
-					"E_MAIL":{ "type": "string", "format":"email"},
-					"E_MAIL_1":{ "type": "string"},
-					"E_MAIL_2":{ "type": "string"},
-					"E_MAIL_3":{ "type": "string"},
-					"ENDERECO":{ "type": "string"},
-					"ENDERECO_NUMERO":{ "type": "string"},
-					"FILIAL_FORN":{ "type": "string"},
-					"HORA_INCLUSAO":{ "type": "string"},
-					"HORA_ULT_ALTERACAO":{ "type": "string"},
-					"ID_FORN":{ "type": "string"},
-					"ID_REGISTRO":{ "type": "string"},
-					"IE":{ "type": "string"},
-					"LIBERADO":{ "type": "string"},
-					"NOME_FANTASIA":{ "type": "string"},
-					"RAMAL_1":{ "type": "string"},
-					"RAMAL_2":{ "type": "string"},
-					"RAZAO_SOCIAL":{ "type": "string"},
-					"SITE":{ "type": "string"},
-					"STATUS_LIBERACAO":{ "type": "string"},
-					"TELEFONE_1":{ "type": "string"},
-					"TELEFONE_2":{ "type": "string"},
-					"TIPO":{ "type": "string"},
-					"UF":{ "type": "string"}					
-				}
-			}
-		}
-	},
-	"paths":{
-		"/rest/crudCTC/Produtos":{
-			"get":{
-				"summary":"Lista de Produtos",
-				"responses":{
-					"200":{						
-						"description":"Operação bem-sucedida",
-						"$ref":"#/components/produto"
-					}
-				}
-			}
-		},
-		"/rest/crudCTC/Fornecedores":{
-			"get":{
-				"summary":"Lista de Fornecedores",
-				"description":"Retorna uma lista de fornecedores"
-				"responses":{
-					"200":{
-						"description":"Operação bem-sucedida",
-						"type":"array",
-						"$ref":"#/components/fornecedor"
-					}
-				}
-				
-			}
-		}
-	}
+  "swagger": "2.0",
+  "components": {
+    "schemas": {
+      "produto": {
+        "type": "object",
+        "properties": {
+          "BLOQUEADO": {
+            "type": "string"
+          },
+          "CODIGO": {
+            "type": "string"
+          },
+          "DATA_ALTERACAO": {
+            "type": "string"
+          },
+          "DATA_INCLUSAO": {
+            "type": "string"
+          },
+          "DESCRICAO_ESTENDIDA": {
+            "type": "string"
+          },
+          "DESCRICAO_TIPO": {
+            "type": "string"
+          },
+          "DESCRICAO_UM": {
+            "type": "string"
+          },
+          "HORA_ALTERACAO": {
+            "type": "string"
+          },
+          "HORA_INCLUSAO": {
+            "type": "string"
+          },
+          "TIPO": {
+            "type": "string"
+          },
+          "UNIDADE_MEDIDA": {
+            "type": "string"
+          }
+        }
+      },
+      "fornecedor": {
+        "type": "object",
+        "properties": {
+          "BAIRRO": {
+            "type": "string"
+          },
+          "CCM": {
+            "type": "string"
+          },
+          "CELULAR_1": {
+            "type": "string"
+          },
+          "CELULAR_2": {
+            "type": "string"
+          },
+          "CELULAR_3": {
+            "type": "string"
+          },
+          "CEP": {
+            "type": "string"
+          },
+          "CIDADE": {
+            "type": "string"
+          },
+          "CNPJ": {
+            "type": "string"
+          },
+          "CONTATO_1": {
+            "type": "string"
+          },
+          "CONTATO_2": {
+            "type": "string"
+          },
+          "CONTATO_3": {
+            "type": "string"
+          },
+          "DATA_INCLUSAO": {
+            "type": "string"
+          },
+          "DDD": {
+            "type": "string"
+          },
+          "DESCRIC_STATUS": {
+            "type": "string"
+          },
+          "DESCRIC_TIPO": {
+            "type": "string"
+          },
+          "DT_ULTIMA_ALTERACAO": {
+            "type": "string"
+          },
+          "E_MAIL": {
+            "type": "string",
+            "format": "email"
+          },
+          "E_MAIL_1": {
+            "type": "string"
+          },
+          "E_MAIL_2": {
+            "type": "string"
+          },
+          "E_MAIL_3": {
+            "type": "string"
+          },
+          "ENDERECO": {
+            "type": "string"
+          },
+          "ENDERECO_NUMERO": {
+            "type": "string"
+          },
+          "FILIAL_FORN": {
+            "type": "string"
+          },
+          "HORA_INCLUSAO": {
+            "type": "string"
+          },
+          "HORA_ULT_ALTERACAO": {
+            "type": "string"
+          },
+          "ID_FORN": {
+            "type": "string"
+          },
+          "ID_REGISTRO": {
+            "type": "string"
+          },
+          "IE": {
+            "type": "string"
+          },
+          "LIBERADO": {
+            "type": "string"
+          },
+          "NOME_FANTASIA": {
+            "type": "string"
+          },
+          "RAMAL_1": {
+            "type": "string"
+          },
+          "RAMAL_2": {
+            "type": "string"
+          },
+          "RAZAO_SOCIAL": {
+            "type": "string"
+          },
+          "SITE": {
+            "type": "string"
+          },
+          "STATUS_LIBERACAO": {
+            "type": "string"
+          },
+          "TELEFONE_1": {
+            "type": "string"
+          },
+          "TELEFONE_2": {
+            "type": "string"
+          },
+          "TIPO": {
+            "type": "string"
+          },
+          "UF": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/rest/crudCTC/Produtos": {
+      "get": {
+        "summary": "Lista de Produtos",
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "$ref": "#/components/produto"
+          }
+        }
+      }
+    },
+    "/rest/crudCTC/Fornecedores": {
+      "get": {
+        "summary": "Lista de Fornecedores",
+        "description": "Retorna uma lista de fornecedores",
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "type": "array",
+            "$ref": "#/components/fornecedor"
+          }
+        }
+      }
+    }
+  }
 }
