@@ -79,7 +79,14 @@
 						"type":"string",
 						"required":false,
 						"description":"Informe a data e hora"
-					}
+					},
+					{
+						"in": "query",
+						"name":"dataHora",
+						"type":"string",
+						"required":false,
+						"description":"Informe a data e hora"
+					}					
 				],
 				"responses":{
 					"400":{						
