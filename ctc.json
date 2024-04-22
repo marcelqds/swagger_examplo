@@ -70,9 +70,7 @@
 				"tags":["Lista Produtos"],
 				"summary":"Lista de Produtos",
 				"security":[
-					{
-						"basicAuth": []
-					}
+					{ "basicAuth": [] }
 				],
 				"parameters":[
 					{
