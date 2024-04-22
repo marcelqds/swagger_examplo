@@ -69,6 +69,20 @@
 			"get":{
 				"tags":["Lista Produtos"],
 				"summary":"Lista de Produtos",
+				"security":[
+					{
+						"basicAuth": []
+					}
+				],
+				"parameters":[
+					{
+						"in": "header",
+						"name":"xParametro",
+						"type":"string",
+						"required":false,
+						"description":"Informe a data e hora"
+					}
+				],
 				"responses":{
 					"400":{						
 						"description":"Operação bem-sucedida",
