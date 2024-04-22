@@ -70,7 +70,7 @@
 				"tags":["Lista Produtos"],
 				"summary":"Lista de Produtos",
 				"responses":{
-					"200":{						
+					"400":{						
 						"description":"Operação bem-sucedida",
 						"content":{
 							"application/json":{
@@ -79,6 +79,18 @@
 									"PRODUTOS":{
 										"$ref":"#/components/schemas/produto"
 									}
+								}
+							}
+						}
+					},
+					"200":{
+						"description": "Operacao bem sucessida",
+						"schema":{
+							"type":"object",
+							"properties":{
+								"nome":{
+									"type":"string",
+									"description":"Nome do produto"
 								}
 							}
 						}
