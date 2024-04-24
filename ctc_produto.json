@@ -1,0 +1,70 @@
+{
+	"swagger":"2.0",
+	"components":{
+		"schemas":{
+			"produto":{
+				"type":"object",
+				"properties":{
+					"BLOQUEADO":{"type":"string"},
+					"CODIGO":{"type":"string"},
+					"DATA_ALTERACAO":{"type":"string"},
+					"DATA_INCLUSAO":{"type":"string"},
+					"DESCRICAO_ESTENDIDA":{"type":"string"},
+					"DESCRICAO_TIPO":{"type":"string"},
+					"DESCRICAO_UM":{"type":"string"},
+					"HORA_ALTERACAO":{"type":"string"},
+					"HORA_INCLUSAO":{"type":"string"},
+					"TIPO":{"type":"string"},
+					"UNIDADE_MEDIDA":{"type":"string"}
+				}
+			}
+		}
+	},
+	"paths":{
+		"/rest/crudCTC/Produtos":{
+			"get":{
+				"tags":["Lista Produtos"],
+				"summary":"Lista de Produtos",
+				"security":[
+					{ "basicAuth": [] }
+				],
+				"parameters":[
+					{
+						"in": "header",
+						"name":"xParametro",
+						"type":"string",
+						"required":false,
+						"description":"Informe a data e hora"
+					}	
+				],
+				"responses":{
+					"400":{						
+						"description":"Operação bem-sucedida",
+						"content":{
+							"application/json":{
+								"schema":{
+									"type":"array",
+									"PRODUTOS":{
+										"$ref":"#/components/schemas/produto"
+									}
+								}
+							}
+						}
+					},
+					"200":{
+						"description": "Operacao bem sucessida",
+						"schema":{
+							"type":"object",
+							"properties":{
+								"nome":{
+									"type":"string",
+									"description":"Nome do produto"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
