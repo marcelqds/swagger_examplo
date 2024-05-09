@@ -1,0 +1,279 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CTC - Lumina",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://189.126.192.218:9096"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "paths": {
+    "/rest/xGetCliente/Clientes/": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Clientes",
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "CGC_CPF",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Data_Ref",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/xGetFornece/Fornecedores/": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Fornecedores",
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "CNPJ_CPF",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Data_Ref",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "01/02/2024"
+          },
+          {
+            "name": "Hora_Ref",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/xGetPreNF/PreNF/": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Consulta Pré Nota de Entrada",
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "header",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "12"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/xGetProduto/Produtos/": {
+      "get": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Produtos",
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Codigo_Produto",
+            "in": "header",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "130274"
+          },
+          {
+            "name": "Data_Ref",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Hora_Ref",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Bloqueio",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rest/xPostPreNF/PreNF/": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Pré Nota de Entrada",
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "PreNF": [
+                    {
+                      "Params": [
+                        {
+                          "ID": "12",
+                          "CNPJ_CTC": "03998869000165",
+                          "Tp_Process": "NF",
+                          "Num_Doc": "00000000A",
+                          "Dt_Emiss": "25/04/2024",
+                          "Tp_Doc": "SPED",
+                          "Form_Propr": "S",
+                          "Cod_Fornec": "014931",
+                          "Lj_Fornec": "01",
+                          "Serie_NF": "T",
+                          "Tp_NF": "N",
+                          "Cond_Pgt": "001"
+                        }
+                      ],
+                      "Items": [
+                        {
+                          "Item_NF": "0001",
+                          "Cod_Prod": "130274",
+                          "Dt_Vencto": "25/04/2024",
+                          "Dt_Receb_NF": "25/04/2024",
+                          "Centro_Custo": "5030101",
+                          "Tp_Custo": "1",
+                          "Qtd_Item": 1,
+                          "Vlr_Unit": 300,
+                          "Vlr_Tot": 300,
+                          "Vlr_Desc_Item": 0,
+                          "Vlr_Frete": 0,
+                          "Vlr_PA": 0,
+                          "Vlr_Ret_Contra": 0,
+                          "Natureza": "5085"
+                        },
+                        {
+                          "Item_NF": "0002",
+                          "Cod_Prod": "130212",
+                          "Dt_Vencto": "25/04/2024",
+                          "Dt_Receb_NF": "25/04/2024",
+                          "Centro_Custo": "5030101",
+                          "Tp_Custo": "1",
+                          "Qtd_Item": 1,
+                          "Vlr_Unit": 200,
+                          "Vlr_Tot": 200,
+                          "Vlr_Desc_Item": 0,
+                          "Vlr_Frete": 0,
+                          "Vlr_PA": 0,
+                          "Vlr_Ret_Contra": 0,
+                          "Natureza": "5085"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
