@@ -6,123 +6,120 @@
     "version": "1.0.0"
   },
   "paths": {
-    "paths": {
-      "/rest/xGetPreNF/PreNF": {
-        "get": {
-          "tags": [
-            "PreNF"
-          ],
-          "summary": "Consulta Pré Nota de Entrada",
-          "description": "Consulta Pré Nota de Entrada",
-          "security": [
-            {
-              "basicAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "ID",
-              "in": "header",
-              "schema": {
-                "type": "integer"
-              },
-              "example": "12"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {}
-                }
+    "/rest/xGetPreNF/PreNF": {
+      "get": {
+        "tags": [
+          "PreNF"
+        ],
+        "summary": "Consulta Pré Nota de Entrada",
+        "description": "Consulta Pré Nota de Entrada",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "header",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "12"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
               }
             }
           }
         }
       },
-      "/rest/xPostPreNF/PreNF": {
-        "post": {
-          "tags": [
-            "PreNF"
-          ],
-          "summary": "Pré Nota de Entrada",
-          "description": "Pré Nota de Entrada",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "example": {
-                    "PreNF": [
-                      {
-                        "Params": [
-                          {
-                            "ID": "12",
-                            "CNPJ_CTC": "03998869000165",
-                            "Tp_Process": "NF",
-                            "Num_Doc": "00000000A",
-                            "Dt_Emiss": "25/04/2024",
-                            "Tp_Doc": "SPED",
-                            "Form_Propr": "S",
-                            "Cod_Fornec": "014931",
-                            "Lj_Fornec": "01",
-                            "Serie_NF": "T",
-                            "Tp_NF": "N",
-                            "Cond_Pgt": "001"
-                          }
-                        ],
-                        "Items": [
-                          {
-                            "Item_NF": "0001",
-                            "Cod_Prod": "130274",
-                            "Dt_Vencto": "25/04/2024",
-                            "Dt_Receb_NF": "25/04/2024",
-                            "Centro_Custo": "5030101",
-                            "Tp_Custo": "1",
-                            "Qtd_Item": 1,
-                            "Vlr_Unit": 300,
-                            "Vlr_Tot": 300,
-                            "Vlr_Desc_Item": 0,
-                            "Vlr_Frete": 0,
-                            "Vlr_PA": 0,
-                            "Vlr_Ret_Contra": 0,
-                            "Natureza": "5085"
-                          },
-                          {
-                            "Item_NF": "0002",
-                            "Cod_Prod": "130212",
-                            "Dt_Vencto": "25/04/2024",
-                            "Dt_Receb_NF": "25/04/2024",
-                            "Centro_Custo": "5030101",
-                            "Tp_Custo": "1",
-                            "Qtd_Item": 1,
-                            "Vlr_Unit": 200,
-                            "Vlr_Tot": 200,
-                            "Vlr_Desc_Item": 0,
-                            "Vlr_Frete": 0,
-                            "Vlr_PA": 0,
-                            "Vlr_Ret_Contra": 0,
-                            "Natureza": "5085"
-                          }
-                        ]
-                      }
-                    ]
-                  }
+    "/rest/xPostPreNF/PreNF": {
+      "post": {
+        "tags": [
+          "PreNF"
+        ],
+        "summary": "Pré Nota de Entrada",
+        "description": "Pré Nota de Entrada",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "PreNF": [
+                    {
+                      "Params": [
+                        {
+                          "ID": "12",
+                          "CNPJ_CTC": "03998869000165",
+                          "Tp_Process": "NF",
+                          "Num_Doc": "00000000A",
+                          "Dt_Emiss": "25/04/2024",
+                          "Tp_Doc": "SPED",
+                          "Form_Propr": "S",
+                          "Cod_Fornec": "014931",
+                          "Lj_Fornec": "01",
+                          "Serie_NF": "T",
+                          "Tp_NF": "N",
+                          "Cond_Pgt": "001"
+                        }
+                      ],
+                      "Items": [
+                        {
+                          "Item_NF": "0001",
+                          "Cod_Prod": "130274",
+                          "Dt_Vencto": "25/04/2024",
+                          "Dt_Receb_NF": "25/04/2024",
+                          "Centro_Custo": "5030101",
+                          "Tp_Custo": "1",
+                          "Qtd_Item": 1,
+                          "Vlr_Unit": 300,
+                          "Vlr_Tot": 300,
+                          "Vlr_Desc_Item": 0,
+                          "Vlr_Frete": 0,
+                          "Vlr_PA": 0,
+                          "Vlr_Ret_Contra": 0,
+                          "Natureza": "5085"
+                        },
+                        {
+                          "Item_NF": "0002",
+                          "Cod_Prod": "130212",
+                          "Dt_Vencto": "25/04/2024",
+                          "Dt_Receb_NF": "25/04/2024",
+                          "Centro_Custo": "5030101",
+                          "Tp_Custo": "1",
+                          "Qtd_Item": 1,
+                          "Vlr_Unit": 200,
+                          "Vlr_Tot": 200,
+                          "Vlr_Desc_Item": 0,
+                          "Vlr_Frete": 0,
+                          "Vlr_PA": 0,
+                          "Vlr_Ret_Contra": 0,
+                          "Natureza": "5085"
+                        }
+                      ]
+                    }
+                  ]
                 }
               }
             }
-          },
-          "security": [
-            {
-              "basicAuth": []
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {}
-              }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
             }
           }
         }
