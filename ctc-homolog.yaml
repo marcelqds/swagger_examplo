@@ -1,0 +1,402 @@
+openapi: '3.0.3'
+info:
+  version: 1.0.0
+  title: API Integração CTC Infra - Homologação
+  contact:
+    name: Equipe de Desenvolvimento - Artiq
+    email: mauricio.souza@artiq.com.br
+servers:
+    - url: https://api-ipaas.totvs.app/sync-hook/api/v1/integrations
+      description: Servidor de homologação
+paths:
+  /a9207e30-6379-4c55-ac80-3a6fa5e605c3/execute:
+    post:
+      tags:
+        - Produto
+      summary: Lista de Produtos
+      parameters:
+        - in: header
+          name: codigo-produto
+          required: false
+          description: Informe o Código do produto
+          schema:
+            type: string
+        - in: header
+          name: data-ref
+          required: false
+          description: Informe a data de referência (00/00/0000)
+          schema:
+            type: string
+        - in: header
+          name: hora-ref
+          required: false
+          description: Informe a hora de referência (10:00)
+          schema:
+            type: string          
+        - in: header
+          name: bloqueio
+          required: false
+          description: Informe se bloqueado ou não (1=SIM, 2=Não)
+          schema:
+            type: string          
+        - in: header
+          name: apiKey
+          required: true
+          description: Apikey para permitir acesso a api
+          schema:
+            type: string          
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messageId:
+                    type: string
+                  status:
+                    type: integer
+                  timestamp:
+                    type: string
+                  result:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/produto'
+  /6cac2dc4-73dd-4077-a806-8082cc63d353/execute:
+    post:
+      tags:
+        - Fornecedor
+      summary: Lista de Fornecedores
+      description: Retorna uma lista de fornecedores
+      parameters:
+        - name: cnpj-cpf
+          in: header
+          required: false
+          description: Informe o CNPJ/CPF do Fornecedor
+          schema:
+            type: string
+        - in: header
+          name: data-ref
+          required: false
+          description: Informe a data de referência (00/00/0000)
+          schema:
+            type: string
+        - in: header
+          name: hora-ref
+          required: false
+          description: Informe a hora de referência (10:00)
+          schema:
+            type: string
+        - in: header
+          name: apiKey
+          required: true
+          description: Apikey para permitir acesso a api
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messageId:
+                    type: string
+                  status:
+                    type: integer
+                  timestamp:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/fornecedor'
+                      
+  /3fd21836-7bd2-4e7c-835b-d632a153cfdb/execute:
+    post:
+      tags:
+        - PreNF
+      summary: Busca Pré Nota
+      parameters:
+        - in: header
+          name: id
+          required: true
+          description: Informe o id referente a pré nota
+          schema:
+            type: string
+        - in: header
+          name: apiKey
+          required: true
+          description: Apikey para permitir acesso a api
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messageId:
+                    type: string
+                  status:
+                    type: integer
+                  timestamp:
+                    type: string
+                  result:
+                      type: object
+                      properties:
+                        objects: 
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/response-busca-prenf'
+  /b262b503-8770-4e44-8647-5519a36aa768/execute:
+    post:
+      tags:
+        - PreNF
+      summary: Cria Pré Nota
+      parameters:
+        - in: header
+          name: apiKey
+          required: true
+          description: Apikey para permitir acesso a api
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/prenf'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messageId:
+                    type: string
+                  status:
+                    type: integer
+                  timestamp:
+                    type: string
+                  result:
+                      type: object
+                      properties:
+                        objects: 
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              Mensagem:
+                                type: string
+tags:
+  - name: Fornecedor
+    description: Recursos para fornecedor
+  - name: PreNF
+    description: Recursos para pré Nota
+  - name: Produto
+    description: Recursos para produto
+components:
+  schemas:
+    response-busca-prenf:
+      type: object
+      properties:
+        Nota Fiscal:
+          type: string
+        Serie:
+          type: string
+        Situacao:
+          type: string
+        Erro:
+          type: string
+    prenf:
+      type: object
+      properties:
+        PreNF: 
+          type: array
+          items:
+            type: object
+            properties:
+              Params:
+                $ref: '#/components/schemas/list-params-prenf'
+              Items:
+                $ref: '#/components/schemas/list-items'
+            
+    list-params-prenf:
+      type: array
+      items:
+        $ref: '#/components/schemas/params-prenf'
+    list-items:
+      type: array
+      items:
+        $ref: '#/components/schemas/item-prenf'
+    item-prenf:
+      type: object
+      properties:
+        Item_NF:
+          type: string
+        Cod_Prod:
+          type: string
+        Dt_Vencto:
+          type: string
+        Dt_Receb_NF:
+          type: string
+        Centro_Custo:
+          type: string
+        Tp_Custo:
+          type: string
+        Qtd_Item:
+          type: integer
+        Vlr_Unit:
+          type: integer
+        Vlr_Tot:
+          type: integer
+        Vlr_Desc_Item:
+          type: integer
+        Vlr_Frete:
+          type: integer
+        Vlr_PA:
+          type: integer
+        Vlr_Ret_Contra:
+          type: integer
+        Natureza:
+          type: string
+    params-prenf:
+      type: object
+      properties:
+        ID:
+          type: string
+        CNPJ_CTC:
+          type: string
+        Tp_Process:
+          type: string
+        Num_Doc:
+          type: string
+        Dt_Emiss:
+          type: string
+        Tp_Doc:
+          type: string
+        Form_Propr:
+          type: string
+        Cod_Fornec:
+          type: string
+        Lj_Fornec:
+          type: string
+        Serie_NF:
+          type: string
+        Tp_NF:
+          type: string
+        Cond_Pgt:
+          type: string
+    produto:
+      type: object
+      properties:
+        BLOQUEADO:
+          type: string
+        CODIGO:
+          type: string
+        DATA_ALTERACAO:
+          type: string
+        DATA_INCLUSAO:
+          type: string
+        DESCRICAO_ESTENDIDA:
+          type: string
+        DESCRICAO_TIPO:
+          type: string
+        DESCRICAO_UM:
+          type: string
+        HORA_ALTERACAO:
+          type: string
+        HORA_INCLUSAO:
+          type: string
+        TIPO:
+          type: string
+        UNIDADE_MEDIDA:
+          type: string
+    fornecedor:
+      type: object
+      properties:
+        BAIRRO:
+          type: string
+        CCM:
+          type: string
+        CELULAR_1:
+          type: string
+        CELULAR_2:
+          type: string
+        CELULAR_3:
+          type: string
+        CEP:
+          type: string
+        CIDADE:
+          type: string
+        CNPJ:
+          type: string
+        CONTATO_1:
+          type: string
+        CONTATO_2:
+          type: string
+        CONTATO_3:
+          type: string
+        DATA_INCLUSAO:
+          type: string
+        DDD:
+          type: string
+        DESCRIC_STATUS:
+          type: string
+        DESCRIC_TIPO:
+          type: string
+        DT_ULTIMA_ALTERACAO:
+          type: string
+        E_MAIL:
+          type: string
+          format: email
+        E_MAIL_1:
+          type: string
+        E_MAIL_2:
+          type: string
+        E_MAIL_3:
+          type: string
+        ENDERECO:
+          type: string
+        ENDERECO_NUMERO:
+          type: string
+        FILIAL_FORN:
+          type: string
+        HORA_INCLUSAO:
+          type: string
+        HORA_ULT_ALTERACAO:
+          type: string
+        ID_FORN:
+          type: string
+        ID_REGISTRO:
+          type: string
+        IE:
+          type: string
+        LIBERADO:
+          type: string
+        NOME_FANTASIA:
+          type: string
+        RAMAL_1:
+          type: string
+        RAMAL_2:
+          type: string
+        RAZAO_SOCIAL:
+          type: string
+        SITE:
+          type: string
+        STATUS_LIBERACAO:
+          type: string
+        TELEFONE_1:
+          type: string
+        TELEFONE_2:
+          type: string
+        TIPO:
+          type: string
+        UF:
+          type: string
