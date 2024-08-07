@@ -1,0 +1,506 @@
+{
+  "info": {
+    "title": "Serviço de Estoque",
+    "contact": {},
+    "license": {}
+  },
+  "swagger": "2.0",
+  "components": {
+    "schemas": {
+      "EstoqueJson": {
+        "type": "object",
+        "properties": {
+          "beneficioTributario": {
+            "$ref": "#/definitions/BeneficioTributarioJson"
+          },
+          "cancelamentoEstoque": {
+            "$ref": "#/definitions/CancelamentoEstoqueJson"
+          },
+          "chassi": {
+            "type": "string"
+          },
+          "codigoSegurancaCrv": {
+            "type": "string"
+          },
+          "dataHoraMedicaoHodometro": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "entradaEstoque": {
+            "$ref": "#/definitions/EntradaEstoqueJson"
+          },
+          "entregas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/EntregaJson"
+            }
+          },
+          "estado": {
+            "type": "string",
+            "enum": [
+              "SOLICITADO",
+              "TRANSFERIDO",
+              "CONFIRMADO",
+              "FINALIZADO"
+            ]
+          },
+          "estoqueEmIte": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idEstoqueGeradoPorTransferencia": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idEstoqueOrigemTransferencia": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "inacabadoNoPrimeiroEstoque": {
+            "type": "boolean"
+          },
+          "leasingVeiculoInacabado": {
+            "type": "boolean"
+          },
+          "numeroCrv": {
+            "type": "string"
+          },
+          "origemPorCancelamentoEstoque": {
+            "$ref": "#/definitions/OrigemPorCancelamentoEstoqueJson"
+          },
+          "placa": {
+            "type": "string"
+          },
+          "quilometragemHodometro": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "renavam": {
+            "type": "string"
+          },
+          "restricoesVeiculo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/RestricaoVeiculoJson"
+            }
+          },
+          "saidaEstoque": {
+            "$ref": "#/definitions/SaidaEstoqueJson"
+          },
+          "tipoCrv": {
+            "type": "string",
+            "enum": [
+              "AZUL",
+              "VERDE",
+              "BRANCO",
+              "DIGITAL"
+            ]
+          }
+        },
+        "title": "EstoqueJson"
+      },
+      "MensagemDeErro": {
+        "type": "object",
+        "properties": {
+          "dataHora": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "detalhe": {
+            "type": "string"
+          },
+          "mensagemParaUsuarioFinal": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string"
+          }
+        },
+        "title": "MensagemDeErro"
+      },
+      "MensagemDeErroInterno": {
+        "type": "object",
+        "properties": {
+          "dataHora": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "detalhe": {
+            "type": "string"
+          },
+          "logIdRastreabilidade": {
+            "type": "string"
+          },
+          "mensagemParaUsuarioFinal": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string"
+          }
+        },
+        "title": "MensagemDeErroInterno"
+      },
+      "SolicitacaoEntradaEstoqueZeroKmPelaMontadora": {
+        "type": "object",
+        "required": [
+          "dataEntradaEstoque",
+          "dataHoraMedicaoHodometro",
+          "quilometragemHodometro"
+        ],
+        "properties": {
+          "chassi": {
+            "type": "string",
+            "pattern": "[A-HJ-NPR-Za-hj-npr-z0-9]{17,21}"
+          },
+          "cpfOperadorResponsavel": {
+            "type": "string"
+          },
+          "dataEntradaEstoque": {
+            "type": "string",
+            "format": "date"
+          },
+          "dataHoraMedicaoHodometro": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "quilometragemHodometro": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "SolicitacaoEntradaEstoqueZeroKmPelaMontadora"
+      },
+      "SolicitacaoSaidaEstoqueZeroKmPelaMontadora": {
+        "type": "object",
+        "required": [
+          "dataVenda",
+          "idEstoque",
+          "tipoBeneficioTributario",
+          "valorVenda"
+        ],
+        "properties": {
+          "chaveNotaFiscal": {
+            "type": "string",
+            "minLength": 44,
+            "maxLength": 44
+          },
+          "comprador": {
+            "$ref": "#/definitions/CompradorSaidaEstoque"
+          },
+          "cpfOperadorResponsavel": {
+            "type": "string"
+          },
+          "dataVenda": {
+            "type": "string",
+            "format": "date"
+          },
+          "emailEstabelecimento": {
+            "type": "string",
+            "pattern": "[-A-Za-z0-9_.]+@[-A-Za-z0-9_]+\\.[-A-Za-z0-9_.]+"
+          },
+          "entregaIndicada": {
+            "$ref": "#/definitions/EntregaIndicada"
+          },
+          "idEstoque": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tipoBeneficioTributario": {
+            "type": "string",
+            "enum": [
+              "PCD_ICMS_IPI",
+              "PCD_IPI",
+              "PJ",
+              "PRODUTOR_RURAL",
+              "TAXI",
+              "TAXI_COM_DESCONTO_IOF",
+              "NAO_TEM",
+              "NAO_TRATADO_PELO_RENAVE"
+            ]
+          },
+          "valorVenda": {
+            "type": "number",
+            "format": "double",
+            "maximum": 99999999.99,
+            "exclusiveMaximum": false
+          }
+        },
+        "title": "SolicitacaoSaidaEstoqueZeroKmPelaMontadora"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Estoques",
+      "description": " "
+    },
+    {
+      "name": "Estoques de veículos zero km",
+      "description": " "
+    },
+    {
+      "name": "Estoques de veículos zero km",
+      "description": " "
+    }
+  ],
+  "paths": {
+    "paths": {
+      "/api/montadora/estoques": {
+        "get": {
+          "tags": [
+            "Estoques"
+          ],
+          "summary": "Consultar registro de estoque. Se não informar nenhum parâmetro de pesquisa, será retornado os estoques com data de entrada (sistêmica) nos últimos 3 meses e que estejam em um desses estados: SOLICITADO, TRANSFERIDO ou CONFIRMADO.",
+          "operationId": "getUsingGET_12",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "chassi",
+              "in": "query",
+              "description": "chassi",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "dataHoraRegistroEntradaFinal",
+              "in": "query",
+              "description": "dataHoraRegistroEntradaFinal",
+              "required": false,
+              "type": "string",
+              "format": "date-time",
+              "allowEmptyValue": false,
+              "x-example": "2023-01-01T10:30"
+            },
+            {
+              "name": "dataHoraRegistroEntradaInicial",
+              "in": "query",
+              "description": "dataHoraRegistroEntradaInicial",
+              "required": false,
+              "type": "string",
+              "format": "date-time",
+              "allowEmptyValue": false,
+              "x-example": "2022-12-01T10:30"
+            },
+            {
+              "name": "dataHoraRegistroSaidaFinal",
+              "in": "query",
+              "description": "dataHoraRegistroSaidaFinal",
+              "required": false,
+              "type": "string",
+              "format": "date-time",
+              "allowEmptyValue": false,
+              "x-example": "2023-01-01T10:30"
+            },
+            {
+              "name": "dataHoraRegistroSaidaInicial",
+              "in": "query",
+              "description": "dataHoraRegistroSaidaInicial",
+              "required": false,
+              "type": "string",
+              "format": "date-time",
+              "allowEmptyValue": false,
+              "x-example": "2022-12-01T10:30"
+            },
+            {
+              "name": "estadoEstoque",
+              "in": "query",
+              "description": "estadoEstoque",
+              "required": false,
+              "type": "string",
+              "enum": [
+                "SOLICITADO",
+                "TRANSFERIDO",
+                "CONFIRMADO",
+                "FINALIZADO"
+              ]
+            },
+            {
+              "name": "placa",
+              "in": "query",
+              "description": "placa",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/EstoqueJson"
+                }
+              }
+            },
+            "400": {
+              "description": "Requisição inválida",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "401": {
+              "description": "Não autenticado"
+            },
+            "403": {
+              "description": "Não autorizado"
+            },
+            "404": {
+              "description": "Recurso não encontrado",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "422": {
+              "description": "Erro de negócio (mensagemParaUsuarioFinal pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "500": {
+              "description": "Erro interno (mensagemParaUsuarioFinal, se houver, pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErroInterno"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/montadora/entradas-estoque-zero-km": {
+        "post": {
+          "tags": [
+            "Estoques de veículos zero km"
+          ],
+          "summary": "Entrar com veículo zero km em estoque.",
+          "operationId": "postUsingPOST_18",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "entrada",
+              "description": "entrada",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/SolicitacaoEntradaEstoqueZeroKmPelaMontadora"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "schema": {
+                "$ref": "#/definitions/EstoqueJson"
+              }
+            },
+            "400": {
+              "description": "Requisição inválida",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "401": {
+              "description": "Não autenticado"
+            },
+            "403": {
+              "description": "Não autorizado"
+            },
+            "404": {
+              "description": "Recurso não encontrado",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "422": {
+              "description": "Erro de negócio (mensagemParaUsuarioFinal pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "500": {
+              "description": "Erro interno (mensagemParaUsuarioFinal, se houver, pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErroInterno"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/montadora/saidas-estoque-veiculo-zero-km": {
+        "post": {
+          "tags": [
+            "Estoques de veículos zero km"
+          ],
+          "summary": "Sair com veículo zero km de estoque.",
+          "operationId": "postUsingPOST_21",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "solicitacao",
+              "description": "solicitacao",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/SolicitacaoSaidaEstoqueZeroKmPelaMontadora"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "schema": {
+                "$ref": "#/definitions/EstoqueJson"
+              }
+            },
+            "400": {
+              "description": "Requisição inválida",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "401": {
+              "description": "Não autenticado"
+            },
+            "403": {
+              "description": "Não autorizado"
+            },
+            "404": {
+              "description": "Recurso não encontrado",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "422": {
+              "description": "Erro de negócio (mensagemParaUsuarioFinal pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "500": {
+              "description": "Erro interno (mensagemParaUsuarioFinal, se houver, pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErroInterno"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      }
+    }
+  }
+}
