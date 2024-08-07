@@ -1,0 +1,139 @@
+{
+  "info": {
+    "title": "Serviço de ATPV",
+    "contact": {},
+    "license": {}
+  },
+  "swagger": "2.0",
+  "components": {
+    "schemas": {
+      "MensagemDeErro": {
+        "type": "object",
+        "properties": {
+          "dataHora": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "detalhe": {
+            "type": "string"
+          },
+          "mensagemParaUsuarioFinal": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string"
+          }
+        },
+        "title": "MensagemDeErro"
+      },
+      "MensagemDeErroInterno": {
+        "type": "object",
+        "properties": {
+          "dataHora": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "detalhe": {
+            "type": "string"
+          },
+          "logIdRastreabilidade": {
+            "type": "string"
+          },
+          "mensagemParaUsuarioFinal": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string"
+          }
+        },
+        "title": "MensagemDeErroInterno"
+      },
+      "PdfAtpv": {
+        "type": "object",
+        "properties": {
+          "numeroAtpv": {
+            "type": "string"
+          },
+          "pdfAtpvBase64": {
+            "type": "string"
+          },
+          "xmlAtpvBase64": {
+            "type": "string"
+          }
+        },
+        "title": "PdfAtpv"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "PDF de ATPV",
+      "description": " "
+    }
+  ],
+  "paths": {
+    "paths": {
+      "/api/montadora/pdf-atpv": {
+        "get": {
+          "tags": [
+            "PDF de ATPV"
+          ],
+          "summary": "Consultar PDF do ATPV do veículo",
+          "operationId": "consultarPdfAtpvUsingGET_5",
+          "produces": [
+            "application/json;charset=UTF-8"
+          ],
+          "parameters": [
+            {
+              "name": "chassi",
+              "in": "query",
+              "description": "chassi",
+              "required": true,
+              "type": "string",
+              "pattern": "[A-HJ-NPR-Za-hj-npr-z0-9]{17,21}"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/PdfAtpv"
+              }
+            },
+            "400": {
+              "description": "Requisição inválida",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "401": {
+              "description": "Não autenticado"
+            },
+            "403": {
+              "description": "Não autorizado"
+            },
+            "404": {
+              "description": "Recurso não encontrado",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "422": {
+              "description": "Erro de negócio (mensagemParaUsuarioFinal pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErro"
+              }
+            },
+            "500": {
+              "description": "Erro interno (mensagemParaUsuarioFinal, se houver, pode ser repassada ao usuário final)",
+              "schema": {
+                "$ref": "#/definitions/MensagemDeErroInterno"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      }
+    }
+  }
+}
