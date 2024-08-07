@@ -1,10 +1,10 @@
 {
-  "info": {
-    "title": "Serviço de ATPV",
-    "contact": {},
-    "license": {}
-  },
   "swagger": "2.0",
+  "info":{
+    "version":"0.0.0",
+    "title":"Serviço de ATPV",
+    "contact":{},
+  },
   "components": {
     "schemas": {
       "MensagemDeErro": {
@@ -71,7 +71,6 @@
       "description": " "
     }
   ],
-  "paths": {
     "paths": {
       "/api/montadora/pdf-atpv": {
         "get": {
@@ -97,13 +96,13 @@
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/PdfAtpv"
+                "$ref": "#/components/schemas/PdfAtpv"
               }
             },
             "400": {
               "description": "Requisição inválida",
               "schema": {
-                "$ref": "#/definitions/MensagemDeErro"
+                "$ref": "#/components/schemas/MensagemDeErro"
               }
             },
             "401": {
@@ -114,20 +113,26 @@
             },
             "404": {
               "description": "Recurso não encontrado",
-              "schema": {
-                "$ref": "#/definitions/MensagemDeErro"
+              "content":{
+                "schema": {
+                  "$ref": "#/components/schemas/MensagemDeErro"
+                }
               }
             },
             "422": {
               "description": "Erro de negócio (mensagemParaUsuarioFinal pode ser repassada ao usuário final)",
-              "schema": {
-                "$ref": "#/definitions/MensagemDeErro"
+              "content":{
+                "schema": {
+                  "$ref": "#/components/schemas/MensagemDeErro"
+                }
               }
             },
             "500": {
               "description": "Erro interno (mensagemParaUsuarioFinal, se houver, pode ser repassada ao usuário final)",
-              "schema": {
-                "$ref": "#/definitions/MensagemDeErroInterno"
+              "content":{
+                "schema": {
+                  "$ref": "#/components/schemas/MensagemDeErroInterno"
+                }
               }
             }
           },
@@ -135,5 +140,6 @@
         }
       }
     }
-  }
+ 
+  
 }
