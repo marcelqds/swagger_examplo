@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="f755fa82-3696-4a94-8a38-99347c183236" activeEnvironment="Default" name="eComex" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="94624c4a-9498-4412-ba01-f8635be9d018" wsaVersion="NONE" name="eComexBeanServiceSoapBinding" type="wsdl" bindingName="{http://webservice.bionexo.com/}BionexoBeanServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="https://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean?wsdl"><con:part><con:url>https://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BionexoBeanService" targetNamespace="http://webservice.bionexo.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.bionexo.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:message name="post">
+    <wsdl:part name="login" type="xsd:string"></wsdl:part>
+    <wsdl:part name="password" type="xsd:string"></wsdl:part>
+    <wsdl:part name="operation" type="xsd:string"></wsdl:part>
+    <wsdl:part name="parameters" type="xsd:string"></wsdl:part>
+    <wsdl:part name="xml" type="xsd:anyType"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="request">
+    <wsdl:part name="login" type="xsd:string"></wsdl:part>
+    <wsdl:part name="password" type="xsd:string"></wsdl:part>
+    <wsdl:part name="operation" type="xsd:string"></wsdl:part>
+    <wsdl:part name="parameters" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postResponse">
+    <wsdl:part name="return" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="requestResponse">
+    <wsdl:part name="return" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BionexoInterface">
+    <wsdl:operation name="post">
+      <wsdl:input message="tns:post" name="post"></wsdl:input>
+      <wsdl:output message="tns:postResponse" name="postResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="request">
+      <wsdl:input message="tns:request" name="request"></wsdl:input>
+      <wsdl:output message="tns:requestResponse" name="requestResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BionexoBeanServiceSoapBinding" type="tns:BionexoInterface">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="post">
+      <soap:operation soapAction="post" style="rpc"/>
+      <wsdl:input name="post">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postResponse">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="request">
+      <soap:operation soapAction="request" style="rpc"/>
+      <wsdl:input name="request">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="requestResponse">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BionexoBeanService">
+    <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoPort">
+      <soap:address location="http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean</con:endpoint></con:endpoints><con:operation id="cfc16340-4a79-44f2-8cd9-61129ec06554" isOneWay="false" action="post" name="post" bindingOperationName="post" type="Request-Response" outputName="postResponse" inputName="post" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f4e07512-a373-49f3-8f73-0295eba3e7ff" name="NovoProduto"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecomex.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <web:post>
+            <logar>ws_hospcirculo_sand</logar>
+            <senha>HQBmR6eG3zGf</senha>
+            <xml>
+                <Produtos>
+                    <Produto>
+                        <Nome>TENOXE 100MG</Nome>
+                        <IdCategoria>100</IdCategoria>
+                    </Produto>
+                </Produtos>
+            </xml>
+        </web:post>
+    </soapenv:Body>
+</soapenv:Envelope> ]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="post"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c5d73df2-a53a-449c-ae2d-f4e8411734f9" isOneWay="false" action="request" name="req" bindingOperationName="request" type="Request-Response" outputName="requestResponse" inputName="request" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation></con:interface><con:testSuite id="b201aa0f-c74a-427a-9528-ef1e48b4878e" name="Teste1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="0e0af443-eab7-43b7-a57c-5c505b9c1643" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="request" id="d5d40de3-1aa7-404f-8892-b402d3465e47" name="post - NovoProduto"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>eComexBeanServiceSoapBinding</con:interface><con:operation>post</con:operation><con:request name="post - NovoProduto" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="de8526bb-dd4d-4884-96d5-d81e9bb5a71e"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecomex.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <web:post>
+            <logar>ws_hospcirculo_sand</logar>
+            <senha>HQBmR6eG3zGf</senha>
+            <xml>
+                <Produtos>
+                    <Produto>
+                        <Nome>TENOXE 100MG</Nome>
+                        <IdCategoria>100</IdCategoria>
+                    </Produto>
+                </Produtos>
+            </xml>
+        </web:post>
+    </soapenv:Body>
+</soapenv:Envelope> ]]></con:request><con:assertion type="SOAP Response" id="85d23a79-8978-4777-8f8d-38b6833a60e0" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="post"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
