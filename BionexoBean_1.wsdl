@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BionexoBeanService" targetNamespace="http://webservice.bionexo.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservice.bionexo.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:message name="post">
+    <wsdl:part name="usuario" type="xsd:string"/>
+    <wsdl:part name="senha" type="xsd:string"/>
+    <wsdl:part name="operacao" type="xsd:string"/>
+    <wsdl:part name="parameters" type="xsd:string"/>
+    <wsdl:part name="xml" type="xsd:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="request">
+    <wsdl:part name="usuario" type="xsd:string"/>
+    <wsdl:part name="senha" type="xsd:string"/>
+    <wsdl:part name="operacao" type="xsd:string"/>
+    <wsdl:part name="parameters" type="xsd:string"/>
+    <wsdl:part name="xml" type="xsd:anyType"/>
+  </wsdl:message>
+  <wsdl:message name="postResponse">
+    <wsdl:part name="return" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="requestResponse">
+    <wsdl:part name="return" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="BionexoInterface">
+    <wsdl:operation name="post">
+      <wsdl:input message="tns:post" name="post"/>
+      <wsdl:output message="tns:postResponse" name="postResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="request">
+      <wsdl:input message="tns:request" name="request"/>
+      <wsdl:output message="tns:requestResponse" name="requestResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BionexoBeanServiceSoapBinding" type="tns:BionexoInterface">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="post">
+      <soap:operation soapAction="post" style="rpc"/>
+      <wsdl:input name="post">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postResponse">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="request">
+      <soap:operation soapAction="request" style="rpc"/>
+      <wsdl:input name="request">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="requestResponse">
+        <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BionexoBeanService">
+    <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoPort">
+      <soap:address location="http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
