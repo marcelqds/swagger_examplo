@@ -4,20 +4,20 @@
     <xsd:schema targetNamespace="http://webservice.bionexo.com/">
       <xsd:complexType name="modelMar">
         <xsd:sequence>
-          <xsd:element name="ativo" type="xsd:string" />
-          <xsd:element name="descricao" type="xsd:string" />
-          <xsd:element name="unidade" type="xsd:string" />
+          <xsd:element name="ativo" type="xsd:string"/>
+          <xsd:element name="descricao" type="xsd:string"/>
+          <xsd:element name="unidade" type="xsd:string"/>
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
-
+          
   <wsdl:message name="post">
     <wsdl:part name="usuario" type="xsd:string"/>
     <wsdl:part name="senha" type="xsd:string"/>
     <wsdl:part name="operacao" type="xsd:string"/>
     <wsdl:part name="parameters" type="xsd:string"/>
-    <wsdl:part name="xml" type="xsd:modelMar"/>
+    <wsdl:part name="xml" type="tns:modelMar"/>
   </wsdl:message>
   
   <wsdl:message name="postResponse">
