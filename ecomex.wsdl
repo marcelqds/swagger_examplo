@@ -1,13 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/envelope/" 
-xmlns:inb="http://ecomexds/Inbound_Outbound.wsdl">
-  <soapenv:Header/>
-  <soapenv:Body>
-    <inb:merge>
-      <source>YOUR ERP</source>
-      <messageType></messageType>
-      <messageNumber></messageNumber>
-      <xmldoc></xmldoc>
-    </inb:merge>
-  </soapenv:Body>
-</soapenv:Envelope>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ecomexds/Inbound_Outbound.wsdl"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             name="InboundOutboundService"
+             targetNamespace="http://ecomexds/Inbound_Outbound.wsdl">
+
+    <types>
+        <xsd:schema targetNamespace="http://ecomexds/Inbound_Outbound.wsdl">
+            <xsd:element name="mergeRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="source" type="xsd:string"/>
+                        <xsd:element name="messageType" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="messageNumber" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="xmldoc" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="mergeResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="status" type="xsd:string"/>
+                        <xsd:element name="message" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="mergeRequest">
+        <part name="parameters" element="tns:mergeRequest"/>
+    </message>
+    
+    <message name="mergeResponse">
+        <part name="parameters" element="tns:mergeResponse"/>
+    </message>
+
+    <portType name="InboundOutboundPortType">
+        <operation name="merge">
+            <input message="tns:mergeRequest"/>
+            <output message="tns:mergeResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="InboundOutboundBinding" type="tns:InboundOutboundPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="merge">
+            <soap:operation soapAction="http://ecomexds/Inbound_Outbound.wsdl/merge"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="InboundOutboundService">
+        <port name="InboundOutboundPort" binding="tns:InboundOutboundBinding">
+            <soap:address location="http://yourserviceurl.com/InboundOutbound"/>
+        </port>
+    </service>
+</definitions>
