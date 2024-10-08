@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/envelope/" 
+xmlns:inb="http://ecomexds/Inbound_Outbound.wsdl">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <inb:merge>
+      <source>YOUR ERP</source>
+      <messageType></messageType>
+      <messageNumber></messageNumber>
+      <xmldoc></xmldoc>
+    </inb:merge>
+  </soapenv:Body>
+</soapenv:Envelope>
