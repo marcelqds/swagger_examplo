@@ -50,11 +50,11 @@
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="merge">
             <soap:operation soapAction="http://webservice.bionexo.com/"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
+            <wsdl:input name="mergeRequest">
+                <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
             </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
+            <wsdl:output name="mergeResponse">
+                <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
             </wsdl:output>
         </wsdl:operation>
     </wsdl:binding>
