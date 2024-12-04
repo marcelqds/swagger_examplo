@@ -1,0 +1,58 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservice.bionexo.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BionexoBeanService" targetNamespace="http://webservice.bionexo.com/">
+    <types/>
+    <message name="requestResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="request">
+        <part name="login" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+        <part name="operation" type="xsd:string"/>
+        <part name="parameters" type="xsd:string" minOccurs="0"/>
+    </message>
+    <message name="post">
+        <part name="login" type="xsd:string"/>
+        <part name="password" type="xsd:string"/>
+        <part name="operation" type="xsd:string"/>
+        <part name="parameters" type="xsd:string" minOccurs="0"/>
+        <part name="xml" type="xsd:string"/>
+    </message>
+    <message name="postResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <portType name="BionexoInterface">
+        <operation name="post" parameterOrder="login password operation parameters xml">
+            <input message="tns:post"/>
+            <output message="tns:postResponse"/>
+        </operation>
+        <operation name="request" parameterOrder="login password operation parameters">
+            <input message="tns:request"/>
+            <output message="tns:requestResponse"/>
+        </operation>
+    </portType>
+    <binding name="BionexoInterfaceBinding" type="tns:BionexoInterface">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="post">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+            </output>
+        </operation>
+        <operation name="request">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="BionexoBeanService">
+        <port binding="tns:BionexoInterfaceBinding" name="BionexoPort">
+            <soap:address location="http://ws.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean"/>
+        </port>
+    </service>
+</definitions>
