@@ -73,7 +73,7 @@
 
     <wsdl:service name="BionexoHomologBeanService">
         <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoHomologPort">
-            <soap:address location="http://ws.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean"/>
+            <soap:address location="http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
