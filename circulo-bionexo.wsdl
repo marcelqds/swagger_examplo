@@ -56,7 +56,7 @@
             <wsdl:input name="request">
                 <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
             </wsdl:input>
-            <wsdl:output name="postResponse">
+            <wsdl:output name="requestResponse">
                 <soap:body namespace="http://webservice.bionexo.com/" use="literal"/>
             </wsdl:output>
         </wsdl:operation>
