@@ -30,7 +30,7 @@
     </wsdl:message>
     <wsdl:portType name="BionexoInterface">
         <wsdl:operation name="post">
-            <wsdl:input message="tns:post" name="post">
+            <wsdl:input message="tns:post" name="post"/>
             <wsdl:output message="tns:postResponse" name="postResponse"/>
         </wsdl:operation>
         <wsdl:operation name="request" parameterOrder="login password operation parameters xml">
