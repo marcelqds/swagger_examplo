@@ -65,11 +65,14 @@
         </wsdl:operation>
     </wsdl:binding>
 
-    <wsdl:service name="BionexoBeanService">
-        <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoPort-Prod">
+    <wsdl:service name="BionexoProdBeanService">
+        <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoProdPort">
             <soap:address location="http://ws.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean"/>
         </wsdl:port>
-        <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoPort-Homolog">
+    </wsdl:service>
+
+    <wsdl:service name="BionexoHomologBeanService">
+        <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoHomologPort">
             <soap:address location="http://ws.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean"/>
         </wsdl:port>
     </wsdl:service>
