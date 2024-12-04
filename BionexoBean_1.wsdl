@@ -46,4 +46,9 @@
       <soap:address location="http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean"/>
     </wsdl:port>
   </wsdl:service>
+  <wsdl:service name="BionexoBeanService2">
+    <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoPort">
+      <soap:address location="http://ws-bionexo-sandbox.bionexo.com/ws2/BionexoBean"/>
+    </wsdl:port>
+  </wsdl:service>
 </wsdl:definitions>
