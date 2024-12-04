@@ -9,12 +9,14 @@
             </xsd:complexType>
         </xsd:schema>
     </wsdl:types>
+
     <wsdl:message name="request">
         <wsdl:part name="usuario" type="xsd:string"/>
         <wsdl:part name="senha" type="xsd:string"/>
         <wsdl:part name="operacao" type="xsd:string"/>
         <wsdl:part name="parameters" type="tns:modelMar"/>
     </wsdl:message>
+
     <wsdl:message name="post">
         <wsdl:part name="usuario" type="xsd:string"/>
         <wsdl:part name="senha" type="xsd:string"/>
@@ -33,7 +35,7 @@
             <wsdl:input message="tns:post" name="post"/>
             <wsdl:output message="tns:postResponse" name="postResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="request" parameterOrder="login password operation parameters xml">
+        <wsdl:operation name="request">
             <wsdl:input message="tns:request" name="request"/>
             <wsdl:output message="tns:requestResponse" name="requestResponse"/>
         </wsdl:operation>
