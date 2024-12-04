@@ -11,35 +11,38 @@
     </wsdl:types>
 
     <wsdl:message name="request">
-        <wsdl:part name="usuario" type="xsd:string"/>
-        <wsdl:part name="senha" type="xsd:string"/>
-        <wsdl:part name="operacao" type="xsd:string"/>
+        <wsdl:part name="login" type="xsd:string"/>
+        <wsdl:part name="password" type="xsd:string"/>
+        <wsdl:part name="operation" type="xsd:string"/>
         <wsdl:part name="parameters" type="tns:modelMar"/>
     </wsdl:message>
 
     <wsdl:message name="post">
-        <wsdl:part name="usuario" type="xsd:string"/>
-        <wsdl:part name="senha" type="xsd:string"/>
-        <wsdl:part name="operacao" type="xsd:string"/>
+        <wsdl:part name="login" type="xsd:string"/>
+        <wsdl:part name="password" type="xsd:string"/>
+        <wsdl:part name="operation" type="xsd:string"/>
         <wsdl:part name="parameters" type="tns:modelMar"/>
         <wsdl:part name="xml" type="xsd:string"/>
     </wsdl:message>
+
     <wsdl:message name="postResponse">
         <wsdl:part name="return" type="xsd:string"/>
     </wsdl:message>
     <wsdl:message name="requestResponse">
         <wsdl:part name="return" type="xsd:string"/>
     </wsdl:message>
+
     <wsdl:portType name="BionexoInterface">
-        <wsdl:operation name="post">
+        <wsdl:operation name="post" parameterOrder="login password operation parameters xml">
             <wsdl:input message="tns:post" name="post"/>
             <wsdl:output message="tns:postResponse" name="postResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="request">
+        <wsdl:operation name="request" parameterOrder="login password operation parameters">
             <wsdl:input message="tns:request" name="request"/>
             <wsdl:output message="tns:requestResponse" name="requestResponse"/>
         </wsdl:operation>
     </wsdl:portType>
+
     <wsdl:binding name="BionexoBeanServiceSoapBinding" type="tns:BionexoInterface">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="post">
