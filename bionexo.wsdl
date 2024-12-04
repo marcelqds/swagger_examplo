@@ -69,8 +69,6 @@
         <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoPort-Prod">
             <soap:address location="http://ws.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean"/>
         </wsdl:port>
-    </wsdl:service>
-    <wsdl:service name="BionexoBeanService2">
         <wsdl:port binding="tns:BionexoBeanServiceSoapBinding" name="BionexoPort-Homolog">
             <soap:address location="http://ws.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean"/>
         </wsdl:port>
